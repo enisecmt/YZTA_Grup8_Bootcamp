@@ -6,8 +6,8 @@
 Grup 8
 
 ## Takım Rolleri
-- **Ahmet Kavruk** — Product Owner
 - **Enise Cömet** — Scrum Master
+- **Ahmet Kavruk** — Product Owner
 - **Aleyna Tandoğan** — Developer
 - **İlayda Yılmaz** — Developer
 - **Himmet Can Umutlu** — Developer
