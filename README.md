@@ -48,7 +48,7 @@ YZTA Grup 8
 
 ## Product Backlog URL
 
-[GitHub Projects Board](https://github.com/) <!-- Board oluşturulunca link buraya eklenecek -->
+[GitHub Projects Board](https://github.com/)](https://github.com/users/enisecmt/projects/1) <!-- Board oluşturulunca link buraya eklenecek -->
 
 > **Sorumluluk Reddi:** Bu uygulama hukuki tavsiye vermez. Ürettiği metinler bilgilendirme amaçlı taslaklardır; resmi işlemler öncesi yetkili bir uzmana danışılması önerilir.
 
