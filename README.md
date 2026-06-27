@@ -68,7 +68,7 @@ YZTA Grup 8
 
 - **Daily Scrum:** Daily Scrum toplantılarının zamansal sebeplerden ötürü WhatsApp üzerinden yazılı yapılmasına karar verilmiştir. Daily Scrum örnekleri jpeg veya word olarak ProjectManagement/Sprint1Documents klasöründe paylaşılacaktır.
 
-- **Sprint board update:** <!-- Sprint board ekran görüntüleri buraya -->
+- **Sprint board update:** (https://github.com/enisecmt/YZTA_Grup8_Bootcamp/blob/main/ProjectManagement/Sprint1Documents/sprint1-board.png)
 
 - **Ürün Durumu:** Ekran görüntüleri: <!-- Çalışan ürün ekran görüntüleri buraya -->
 
