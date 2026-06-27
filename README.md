@@ -56,21 +56,21 @@ YZTA Grup 8
 
 # Sprint 1
 
-- **Sprint Notları:**
+- **Sprint Notları:** Sprint hedefimiz, kullanıcının günlük dille yazdığı bir derdi alıp doğru mercii belirleyen ve resmi bir dilekçe üreten, uçtan uca çalışan temel bir MVP ortaya çıkarmaktır. (19 Haziran – 5 Temmuz)
 
-- **Sprint içinde tamamlanması tahmin edilen puan:**
+- **Sprint içinde tamamlanması tahmin edilen puan:** 39
 
-- **Puan tamamlama mantığı:**
+- **Puan tamamlama mantığı:** Story'ler Fibonacci yöntemiyle (1, 2, 3, 5, 8) puanlanmıştır. Her story'nin puanı, sprint toplam puanının (39) yarısından azdır ve seçilen story'lerin toplamı sprint kapasitesini aşmamaktadır.
 
-- **Backlog düzeni ve Story seçimleri:** Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puan sayısını geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur.
+- **Backlog düzeni ve Story seçimleri:** Backlog'umuz ilk yapılacak story'lere göre düzenlenmiştir. Sprint başına tahmin edilen puanı geçmeyecek şekilde sıradan seçimler yapılmaktadır. Story başına çıkan tahmin puanı, toplam puanın yarısından az tutulmuştur.
 
-  Story'ler yapılacak işlere (task'lere) bölünmüştür. Board'da kırmızı item'lar yapılacak işleri (task), mavi item'lar story'leri temsil etmektedir.
+  Story'ler yapılacak işlere (task'lere) bölünmüştür. Görevler her story issue'sunun içinde checklist olarak takip edilmektedir; "Story" etiketli kartlar GitHub Projects board'unda yer almaktadır.
 
-- **Daily Scrum:** Daily Scrum toplantılarının zamansal sebeplerden ötürü Slack üzerinden yapılmasına karar verilmiştir. Daily Scrum örnekleri jpeg veya word olarak Readme'de paylaşılmaktadır: <!-- Daily Scrum link/görselleri buraya -->
+- **Daily Scrum:** Daily Scrum toplantılarının zamansal sebeplerden ötürü WhatsApp üzerinden yazılı yapılmasına karar verilmiştir. Daily Scrum örnekleri jpeg veya word olarak ProjectManagement/Sprint1Documents klasöründe paylaşılacaktır.
 
-- **Sprint board update:** <!-- Sprint board screenshotları buraya -->
+- **Sprint board update:** <!-- Sprint board ekran görüntüleri buraya -->
 
-- **Ürün Durumu:** Ekran görüntüleri: <!-- Ürün ekran görüntüleri buraya -->
+- **Ürün Durumu:** Ekran görüntüleri: <!-- Çalışan ürün ekran görüntüleri buraya -->
 
 - **Sprint Review:**
   Alınan kararlar:
@@ -78,7 +78,7 @@ YZTA Grup 8
 
 - **Sprint Retrospective:**
   -
-
+  
 ---
 
 # Sprint 2
