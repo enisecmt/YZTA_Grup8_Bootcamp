@@ -6,13 +6,11 @@ YZTA Grup 8
 
 ## Takım Elemanları
 
-- Enise Cömet: Scrum Master
-- Ahmet Kavruk: Product Owner
-- Aleyna Tandoğan: Developer
-- İlayda Yılmaz: Developer
-- Himmet Can Umutlu: Developer
-
-> Geliştirme alanları (frontend, AI/orkestrasyon, veri/QA) ilk sprintte netleştirilecektir.
+- Ahmet Kavruk: Product Owner — Bilgi Tabanı & İçerik
+- Enise Cömet: Scrum Master — Hat A (AI/Orkestrasyon, dilekçe üretimi)
+- Aleyna Tandoğan: Developer — Hat A (AI/Orkestrasyon, sınıflandırma)
+- İlayda Yılmaz: Developer — Hat B (Frontend)
+- Himmet Can Umutlu: Developer — Hat C (Veri & QA)
 
 ## Ürün İsmi
 
@@ -20,7 +18,7 @@ YZTA Grup 8
 
 ## Ürün Açıklaması
 
-- Hak Pusulası, vatandaşın günlük dille anlattığı bir derdi (iade, abonelik iptali, kira, komşu, kamu hizmeti şikâyeti vb.) alıp; hangi mercie, hangi belgelerle, hangi süre içinde başvuracağını belirleyen çok-ajanlı bir yapay zekâ asistanıdır. Kullanıcıya resmi üslupta hazır bir dilekçe ve adım adım yol haritası üretir. Amacımız, hukuki dile yabancı insanların haklarını ararken yaşadığı "nereye, ne yazacağım?" karmaşasını ortadan kaldırmaktır.
+- Hak Pusulası, vatandaşın günlük dille anlattığı bir derdi (iade, abonelik iptali, kira, komşu, kamu hizmeti şikâyeti vb.) alıp; hangi mercie, hangi belgelerle, hangi süre içinde başvuracağını belirleyen çok-ajanlı bir yapay zekâ asistanıdır. Kullanıcıya resmi üslupta hazır bir dilekçe ve adım adım yol haritası üretir.
 
 ## Ürün Özellikleri
 
@@ -40,11 +38,11 @@ YZTA Grup 8
 
 ## Kullanılan Teknolojiler
 
-- **Arayüz:** Glide / Bubble
-- **Orkestrasyon:** n8n
+- **Arayüz:** Lovable / Netlify
+- **Orkestrasyon:** n8n (local)
 - **Yapay Zekâ:** Google Gemini
-- **Bilgi Tabanı / RAG:** Supabase (pgvector) / Airtable
-- **Veritabanı:** Supabase / Google Sheets
+- **Bilgi Tabanı:** Google Sheets
+- **Veritabanı:** Supabase
 
 ## Product Backlog URL
 
@@ -66,19 +64,67 @@ YZTA Grup 8
 
   Story'ler yapılacak işlere (task'lere) bölünmüştür. Görevler her story issue'sunun içinde checklist olarak takip edilmektedir; "Story" etiketli kartlar GitHub Projects board'unda yer almaktadır.
 
-- **Daily Scrum:** Daily Scrum toplantılarının zamansal sebeplerden ötürü WhatsApp üzerinden yazılı yapılmasına karar verilmiştir. Daily Scrum örnekleri jpeg veya word olarak ProjectManagement/Sprint1Documents klasöründe paylaşılacaktır.
+- **Daily Scrum:** Daily Scrum toplantılarının zamansal sebeplerden ötürü WhatsApp üzerinden yazılı yapılmasına karar verilmiştir. Detaylı günlük kayıtlar: [Sprint 1 Daily Scrum Notları](ProjectManagement/Sprint1Documents/DailyScrumMeetingNotesSprint1.pdf)
 
-- **Sprint board update:** ![Sprint 1 Board](ProjectManagement/Sprint1Documents/sprint1-board.png)
+- **Sprint board update:**
+  ![Sprint 1 Board](ProjectManagement/Sprint1Documents/sprint1-board.png)
+  ![Sprint 1 Board Güncelleme](ProjectManagement/Sprint1Documents/sprint1-board2.png)
 
-- **Ürün Durumu:** Ekran görüntüleri: <!-- Çalışan ürün ekran görüntüleri buraya -->
+- **Ürün Durumu:** Ekran görüntüleri:
+
+  **Arayüz (Lovable + Netlify):**
+  ![Giriş Ekranı](ProjectManagement/Sprint1Documents/arayuz-1-giris.png)
+  ![Kategori Seçimi](ProjectManagement/Sprint1Documents/arayuz-2-kategori.png)
+  ![Girdi Ekranı](ProjectManagement/Sprint1Documents/arayuz-3-girdi.png)
+  ![Analiz Ekranı](ProjectManagement/Sprint1Documents/arayuz-4-analiz.png)
+  ![Netlify - Girdi](ProjectManagement/Sprint1Documents/arayuz-netlify-girdi.png)
+  ![Netlify - Kategori](ProjectManagement/Sprint1Documents/arayuz-netlify-kategori.png)
+
+  **Bilgi Tabanı (Google Sheets):**
+  ![Bilgi Tabanı 1](ProjectManagement/Sprint1Documents/bilgi-tabani.png)
+  ![Bilgi Tabanı 2](ProjectManagement/Sprint1Documents/bilgi-tabani2.png)
+
+  **Dilekçe Üretim Testleri (AI Studio):**
+  ![Online İade Testi](ProjectManagement/Sprint1Documents/dilekce-test-1-onlineiade.png)
+  ![Tüketici Hakem Heyeti Testi](ProjectManagement/Sprint1Documents/dilekce-test-2-hakemheyeti.png)
+  ![Abonelik İptali Testi](ProjectManagement/Sprint1Documents/dilekce-test-3-abonelik.png)
+
+  **Sınıflandırma Testleri:**
+  ![Sınıflandırma Testi 1](ProjectManagement/Sprint1Documents/sınıflandırma-testi.png)
+  ![Sınıflandırma Testi 2](ProjectManagement/Sprint1Documents/sınıflandırma-testi2.png)
+  ![Sınıflandırma Testi 3](ProjectManagement/Sprint1Documents/sınıflandırma-testi3.png)
+  ![Sınıflandırma Testi 4](ProjectManagement/Sprint1Documents/sınıflandırma-testi4.png)
+
+  **n8n + Gemini Uçtan Uca Bağlantı Testi:**
+  ![n8n Webhook Testi](ProjectManagement/Sprint1Documents/n8n-webhook-test.png)
 
 - **Sprint Review:**
-  Alınan kararlar:
-  Sprint Review katılımcıları:
+
+  Sprint 1 boyunca ürünün tüm temel bileşenleri ayrı ayrı geliştirildi ve doğrulandı:
+  - Bilgi tabanı (6 dert türü + mercii/mevzuat/süre bilgileri) Google Sheets'te oluşturuldu.
+  - Dilekçe üretim prompt'u AI Studio üzerinde 3 farklı dert türüyle test edildi, tutarlı ve kaliteli sonuçlar alındı.
+  - Dert sınıflandırma prompt'u geliştirildi ve test edildi; kullanıcı metnini doğru kategoriye atayabiliyor.
+  - n8n ile Gemini API arasındaki bağlantı (webhook → Gemini → cevap) başarıyla kuruldu ve doğrulandı.
+  - Arayüz (Lovable + Netlify) 3 adımlı akışla (kategori seçimi → sorun girdisi → sonuç) tasarlandı ve yayınlandı.
+  - Veri yapısı (Supabase) kuruldu, bilgi tabanı içeriğiyle entegre edildi, test senaryoları hazırlandı.
+
+  **Alınan kararlar:**
+  - Bileşenlerin birbirine bağlanması (arayüzün n8n akışına canlı bağlanması) Sprint 2'nin başına taşınmıştır. Sebep: n8n şu an local ortamda çalışmaktadır ve arayüz (Netlify üzerinde canlı) local adrese ulaşamamaktadır; bu bağlantı için gerekli çözüm (genel erişime açma) Sprint 2'de uygulanacaktır.
+  - Bilgi tabanındaki 6 dert türünün tamamı için gerçek dilekçe şablon metinleri Sprint 2'de tamamlanacaktır; öncelik en sık kullanılan kategorilere verilmiştir.
+  - Sınıflandırma akışının n8n içinde bilgi tabanıyla (mercii/mevzuat eşleştirmesi) tam entegrasyonu Sprint 2'ye taşınmıştır.
+  - n8n barındırma kararı (Cloud/self-host) Sprint 2 başında netleştirilecektir.
+
+  **Sprint Review katılımcıları:** Ahmet Kavruk, Enise Cömet, Aleyna Tandoğan, İlayda Yılmaz, Himmet Can Umutlu
 
 - **Sprint Retrospective:**
-  -
-  
+  - İyi giden: AI Studio üzerinden hızlı prototipleme sayesinde n8n kurulumu beklenmeden prompt kalitesi (dilekçe üretimi ve sınıflandırma) erken doğrulandı; bu, riskin erken görülmesini sağladı.
+  - İyi giden: Ekip üyeleri birbirinden bağımsız alanlarda (bilgi tabanı, arayüz, veri yapısı) paralel ilerleyebildi, birbirini beklemek zorunda kalmadı.
+  - Zorlanılan: Gemini API kurulumunda beklenmeyen bir kota sorunu (limit: 0 hatası) zaman kaybettirdi; bu, ekip kontrolünde olmayan bir platform sorunuydu.
+  - Zorlanılan: Local geliştirme ortamının (n8n) canlı arayüzle bağlantısı planlanandan daha geç fark edilen bir teknik detaydı.
+  - Sonraki sprintte değiştirilecek: Entegrasyon adımları (servisler arası bağlantı) sprint başında, ayrı geliştirmeden önce planlanacak.
+  - Sonraki sprintte değiştirilecek: Altyapı kurulumlarına (API, hesap, bağlantı testleri) daha fazla tampon süre ayrılacak.
+  - Sonraki sprintte değiştirilecek: Tahmin puanları sprint planlamada daha gerçekçi gözden geçirilecek.
+
 ---
 
 # Sprint 2
