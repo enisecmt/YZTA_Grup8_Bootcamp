@@ -6,8 +6,8 @@ YZTA Grup 8
 
 ## Takım Elemanları
 
-- Ahmet Kavruk: Product Owner — Bilgi Tabanı & İçerik
 - Enise Cömet: Scrum Master — Hat A (AI/Orkestrasyon, dilekçe üretimi)
+- Ahmet Kavruk: Product Owner — Bilgi Tabanı & İçerik
 - Aleyna Tandoğan: Developer — Hat A (AI/Orkestrasyon, sınıflandırma)
 - İlayda Yılmaz: Developer — Hat B (Frontend)
 - Himmet Can Umutlu: Developer — Hat C (Veri & QA)
