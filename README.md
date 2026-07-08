@@ -141,7 +141,9 @@ YZTA Grup 8
 
 - **Daily Scrum:** <!-- Sprint 2 daily scrum notları buraya eklenecek -->
 
-- **Sprint board update:** <!-- Sprint 2 board ekran görüntüleri buraya -->
+- **Sprint board update:**
+  ![Sprint 2 Board 1](ProjectManagement/Sprint2Documents/sprint2-board-1.png)
+  ![Sprint 2 Board 2](ProjectManagement/Sprint2Documents/sprint2-board-2.png)
 
 - **Ürün Durumu:** <!-- Yeni özelliklerin ekran görüntüleri buraya (RAG, hafızalı diyalog, sesli giriş, yol haritası ekranı) -->
 
