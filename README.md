@@ -129,6 +129,29 @@ YZTA Grup 8
 
 # Sprint 2
 
+- **Sprint Notları:** Sprint 2 hedefimiz, ürünü temel MVP'den akıllı asistana taşımaktır: hafıza (eksik bilgiyi kullanıcıya sorma), RAG (dilekçeyi gerçek mevzuata dayandırma), çok-ajan orkestrasyon, sesli giriş ve adım adım yol haritası çıktısı. (6 – 19 Temmuz 2026)
+
+- **Sprint içinde tamamlanması tahmin edilen puan:** 53
+
+- **Puan tamamlama mantığı:** Story'ler Fibonacci yöntemiyle (5, 8) puanlanmıştır. Her story'nin puanı, sprint toplam puanının (53) yarısından azdır ve seçilen story'lerin toplamı sprint kapasitesini aşmamaktadır.
+
+- **Backlog düzeni ve Story seçimleri:** Sprint 1'de yarım kalan işler (şablon metinleri, mercii eşleştirme, uçtan uca test) Sprint 2 story'lerine taşınmıştır. Bu sprintte yapay zekâ katmanları (hafıza, RAG, çok-ajan, ses) öncelik almaktadır. Görevler her story issue'sunun içinde checklist olarak takip edilmektedir.
+
+- **Çalışma prensibi:** n8n Cloud'un 14 günlük denemesi final teslimine (2 Ağustos) denk gelecek şekilde Sprint 3 başında aktive edilecektir. Bu nedenle Sprint 2 boyunca tüm ajan mantığı local n8n ve AI Studio üzerinde geliştirilip manuel olarak test edilmektedir; canlı arayüz-backend bağlantısı Sprint 3'e planlanmıştır.
+
+- **Daily Scrum:** <!-- Sprint 2 daily scrum notları buraya eklenecek -->
+
+- **Sprint board update:** <!-- Sprint 2 board ekran görüntüleri buraya -->
+
+- **Ürün Durumu:** <!-- Yeni özelliklerin ekran görüntüleri buraya (RAG, hafızalı diyalog, sesli giriş, yol haritası ekranı) -->
+
+- **Sprint Review:**
+  Alınan kararlar:
+  Sprint Review katılımcıları:
+
+- **Sprint Retrospective:**
+  -
+
 ---
 
 # Sprint 3
