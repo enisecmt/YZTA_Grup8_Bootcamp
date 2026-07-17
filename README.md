@@ -145,13 +145,36 @@ YZTA Grup 8
   ![Sprint 2 Board 1](ProjectManagement/Sprint2Documents/sprint2-board-1.png)
   ![Sprint 2 Board 2](ProjectManagement/Sprint2Documents/sprint2-board-2.png)
 
-- **Ürün Durumu:** <!-- Yeni özelliklerin ekran görüntüleri buraya (RAG, hafızalı diyalog, sesli giriş, yol haritası ekranı) -->
+- **Ürün Durumu:** Ekran görüntüleri ve testler:
 
-- **Sprint Review:**
+  **Arayüz v2 (Lovable):**
+  ![Giriş](ProjectManagement/Sprint2Documents/arayuz-v2-giris.png)
+  ![Kategori Seçimi](ProjectManagement/Sprint2Documents/arayuz-v2-kategori.png)
+  ![Sorun Yazma](ProjectManagement/Sprint2Documents/arayuz-v2-sorun.png)
+  ![Sesli Giriş](ProjectManagement/Sprint2Documents/arayuz-v2-sesli-giris.jpeg)
+  ![Diyalog (Soru-Cevap)](ProjectManagement/Sprint2Documents/arayuz-v2-diyalog.png)
+  ![Dilekçe Çıktısı 1](ProjectManagement/Sprint2Documents/arayuz-v2-dilekce.png)
+  ![Dilekçe Çıktısı 2](ProjectManagement/Sprint2Documents/arayuz-v2-dilekce2.png)
+  ![Yol Haritası Ekranı](ProjectManagement/Sprint2Documents/arayuz-v2-yolharitasi.png)
+  ![Geçmiş Talepler](ProjectManagement/Sprint2Documents/arayuz-v2-gecmis.png)
+
+  **Hafızalı Diyalog (n8n + Supabase):**
+  Kullanıcı bir konuşma başlatıp eksik bilgi verdiğinde sistem soruyor, cevapları hatırlıyor ve tam çıktı üretiyor. Akış local n8n üzerinde Supabase'e bağlı olarak çalışmaktadır.
+  ![n8n Tüm Node'lar Çalışıyor](ProjectManagement/Sprint2Documents/hafiza-n8n-tum-node-yesil.png)
+  ![n8n Geçmiş Okundu](ProjectManagement/Sprint2Documents/hafiza-n8n-gecmis-okundu.png)
+  Workflow dosyası: [Hak_Pusulasi_Hafizali_Diyalog.json](ProjectManagement/Sprint2Documents/Hak_Pusulasi_Hafizali_Diyalog.json)
+
+  **Prompt Testleri (AI Studio):**
+  ![Slot-Filling (Eksik Bilgi Sorma)](ProjectManagement/Sprint2Documents/slot-filling-test.png)
+  ![Hafızalı Diyalog Testi 1](ProjectManagement/Sprint2Documents/hafiza-diyalog-test1.png)
+  ![Hafızalı Diyalog Testi 2](ProjectManagement/Sprint2Documents/hafiza-diyalog-test2.png)
+  Yol haritası üretim testleri: [yol-haritasi-testleri.md](ProjectManagement/Sprint2Documents/yol-haritasi-testleri.md)
+
+- **Sprint Review:** <!-- Sprint sonunda doldurulacak -->
   Alınan kararlar:
   Sprint Review katılımcıları:
 
-- **Sprint Retrospective:**
+- **Sprint Retrospective:** <!-- Sprint sonunda doldurulacak -->
   -
 
 ---
