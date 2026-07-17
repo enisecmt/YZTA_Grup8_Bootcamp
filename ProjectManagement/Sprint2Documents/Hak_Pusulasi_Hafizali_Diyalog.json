@@ -1,0 +1,406 @@
+{
+  "name": "Hak Pusulası - Hafızalı Diyalog (Hat A)",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "088c72a2-deca-43f3-9830-f674a906fd06",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -2128,
+        -912
+      ],
+      "id": "bbd9939e-09ae-46ed-8b94-cde6c60d23d5",
+      "name": "Webhook",
+      "webhookId": "088c72a2-deca-43f3-9830-f674a906fd06"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "x-goog-api-key",
+              "value": "SENIN_GEMINI_API_KEYIN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contents\": [\n    {\n      \"parts\": [\n        {\n          \"text\": \"Sen Hak Pusulası isimli vatandaş başvuru asistanının ön sınıflandırma bileşenisin. Kullanıcının anlattığı olayı Türkiye'deki uygun başvuru alanına ve ilk başvurulabilecek mercie yönlendir. Merci konusunda yeterli bilgi yoksa tahminde bulunma ve Belirlenemedi yaz. Birden fazla ihtimal varsa en olası olanı birincil merci, diğerlerini alternatif merciler olarak belirt. Kurum, süre, kanun veya prosedür uydurma. Kullanıcıdan alınması gereken eksik bilgiler varsa bunları kısa sorular şeklinde belirt.\\n\\nÖNCEKI KONUSMA GECMISI (bunu dikkate al, tekrar sorma):\\n{{$json.gecmis}}\\n\\nKullanıcının seçtiği alan: {{$json.secilen_baslik || 'Belirtilmedi'}}\\nKullanıcının yeni anlatımı: {{$json.problem}}\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"responseFormat\": {\n      \"text\": {\n        \"mimeType\": \"APPLICATION_JSON\",\n        \"schema\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"kategori\": {\n              \"type\": \"string\",\n              \"description\": \"Olayın ilgili olduğu kısa başvuru veya hukuk alanı.\"\n            },\n            \"birincil_merci\": {\n              \"type\": \"string\",\n              \"description\": \"İlk başvurulması gereken merci. Yeterli bilgi yoksa Belirlenemedi.\"\n            },\n            \"alternatif_merciler\": {\n              \"type\": \"array\",\n              \"description\": \"Uygun olabilecek diğer merciler. Yoksa boş dizi.\",\n              \"items\": {\n                \"type\": \"string\"\n              }\n            },\n            \"ek_bilgi_gerekli\": {\n              \"type\": \"boolean\",\n              \"description\": \"Doğru yönlendirme için kullanıcıdan ek bilgi gerekip gerekmediği.\"\n            },\n            \"eksik_bilgiler\": {\n              \"type\": \"array\",\n              \"description\": \"Kullanıcıya sorulması gereken kısa sorular. Gerekmiyorsa boş dizi.\",\n              \"items\": {\n                \"type\": \"string\"\n              }\n            },\n            \"gerekce\": {\n              \"type\": \"string\",\n              \"description\": \"Sınıflandırmanın kısa ve anlaşılır gerekçesi.\"\n            }\n          },\n          \"required\": [\n            \"kategori\",\n            \"birincil_merci\",\n            \"alternatif_merciler\",\n            \"ek_bilgi_gerekli\",\n            \"eksik_bilgiler\",\n            \"gerekce\"\n          ]\n        }\n      }\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -1968,
+        -928
+      ],
+      "id": "426824a8-aeed-4866-92bf-228b8f2b67c0",
+      "name": "HTTP Request",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "jsCode": "const rawText = $json.candidates?.[0]?.content?.parts?.[0]?.text;\n\nif (!rawText) {\n  throw new Error('Gemini cevabında analiz metni bulunamadı.');\n}\n\nconst cleanedText = rawText\n  .replace(/^```json\\s*/i, '')\n  .replace(/\\s*```$/, '')\n  .trim();\n\nconst analiz = JSON.parse(cleanedText);\n\n// İlk Webhook node'una gelen form verileri\nconst form = $('Bağlam Hazırla').first().json ?? {};\n\nreturn [\n  {\n    json: {\n      ad_soyad: form.ad_soyad ?? '',\n      secilen_baslik: form.secilen_baslik ?? '',\n      problem: form.problem ?? '',\n      kategori: analiz.kategori,\n      birincil_merci: analiz.birincil_merci,\n      alternatif_merciler: analiz.alternatif_merciler ?? [],\n      eksik_bilgiler: analiz.eksik_bilgiler ?? [],\n      gerekce: analiz.gerekce ?? ''\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1792,
+        -928
+      ],
+      "id": "ae6b751a-e6f0-4cd2-81af-038762e1378c",
+      "name": "Analiz JSON"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "x-goog-api-key",
+              "value": "SENIN_GEMINI_API_KEYIN"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contents\": [\n    {\n      \"parts\": [\n        {\n          \"text\": \"Sen Hak Pusulası isimli vatandaş başvuru asistanının dilekçe taslağı hazırlama bileşenisin. Türkiye'deki resmi başvuru üslubuna uygun, kullanıcının daha sonra düzenleyebileceği bir taslak oluştur.\\n\\nKESİN KURALLAR:\\n- Kullanıcı tarafından verilmeyen tarih, adres, tutar, kimlik numarası, kurum birimi veya olay ayrıntısını uydurma.\\n- Eksik bilgileri dilekçe içinde [BİLGİ GEREKLİ: ...] biçiminde göster.\\n- Bilgi tabanı kaynağı verilmediği için kesin kanun maddesi, kesin süre veya doğrulanmamış prosedür yazma.\\n- Seçilen başlığı yalnızca ipucu kabul et; kesin hukuki sonuç kabul etme.\\n- Kullanıcıya sunulabilecek, düzenlenebilir bir dilekçe taslağı üret.\\n- Dilekçede uygun olduğu ölçüde hitap makamı, başvuran, konu, açıklamalar, talep ve sonuç, ekler, tarih ve imza bölümleri yer alsın.\\n- Çıktının sonunda bunun hukuki tavsiye olmadığını belirt.\\n\\nKULLANICI VERİLERİ:\\nAd Soyad: {{$json.ad_soyad}}\\nKullanıcının seçtiği başlık: {{$json.secilen_baslik}}\\nKullanıcının anlatımı: {{$json.problem}}\\nÖn kategori: {{$json.kategori}}\\nÖn değerlendirmedeki birincil merci: {{$json.birincil_merci}}\\nAlternatif merciler: {{$json.alternatif_merciler.join(', ')}}\\nEksik görülen bilgiler: {{$json.eksik_bilgiler.join(' | ')}}\\nSınıflandırma gerekçesi: {{$json.gerekce}}\"\n        }\n      ]\n    }\n  ],\n  \"generationConfig\": {\n    \"responseFormat\": {\n      \"text\": {\n        \"mimeType\": \"APPLICATION_JSON\",\n        \"schema\": {\n          \"type\": \"object\",\n          \"properties\": {\n            \"dilekce_turu\": {\n              \"type\": \"string\",\n              \"description\": \"Hazırlanan başvuru veya dilekçe türü.\"\n            },\n            \"dilekce_basligi\": {\n              \"type\": \"string\",\n              \"description\": \"Dilekçenin kısa başlığı.\"\n            },\n            \"hitap_makami\": {\n              \"type\": \"string\",\n              \"description\": \"Taslakta kullanılacak hitap makamı.\"\n            },\n            \"dilekce_metni\": {\n              \"type\": \"string\",\n              \"description\": \"Resmi üslupla hazırlanmış, eksik alanları köşeli parantezlerle gösteren düzenlenebilir dilekçe metni.\"\n            },\n            \"eksik_bilgiler\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"string\"\n              },\n              \"description\": \"Kullanıcının taslağı tamamlamak için doldurması gereken bilgiler.\"\n            },\n            \"gerekli_belgeler\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"string\"\n              },\n              \"description\": \"Başvuruda genellikle yararlı olabilecek belgeler.\"\n            },\n            \"yol_haritasi\": {\n              \"type\": \"array\",\n              \"items\": {\n                \"type\": \"string\"\n              },\n              \"description\": \"Kullanıcının izleyebileceği kısa adımlar.\"\n            },\n            \"uyari\": {\n              \"type\": \"string\",\n              \"description\": \"Hukuki tavsiye olmadığına ilişkin sorumluluk reddi.\"\n            }\n          },\n          \"required\": [\n            \"dilekce_turu\",\n            \"dilekce_basligi\",\n            \"hitap_makami\",\n            \"dilekce_metni\",\n            \"eksik_bilgiler\",\n            \"gerekli_belgeler\",\n            \"yol_haritasi\",\n            \"uyari\"\n          ]\n        }\n      }\n    }\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -1648,
+        -928
+      ],
+      "id": "66d1ea4f-1b14-4dff-bc89-35792df2cf03",
+      "name": "Dilekçe Üret",
+      "retryOnFail": true,
+      "maxTries": 5,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "jsCode": "const rawText = $json.candidates?.[0]?.content?.parts?.[0]?.text;\n\nif (!rawText) {\n  throw new Error('Gemini cevabında dilekçe metni bulunamadı.');\n}\n\nconst cleanedText = rawText\n  .replace(/^```json\\s*/i, '')\n  .replace(/\\s*```$/, '')\n  .trim();\n\nconst dilekce = JSON.parse(cleanedText);\n\n// İlk Code node'undan gelen kullanıcı ve sınıflandırma verileri\nconst analiz = $('Analiz JSON').first().json;\n\nreturn [\n  {\n    json: {\n      durum: 'dilekce_hazir',\n\n      ad_soyad: analiz.ad_soyad,\n      secilen_baslik: analiz.secilen_baslik,\n      problem: analiz.problem,\n\n      kategori: analiz.kategori,\n      birincil_merci: analiz.birincil_merci,\n      alternatif_merciler: analiz.alternatif_merciler ?? [],\n      siniflandirma_gerekcesi: analiz.gerekce ?? '',\n\n      dilekce_turu: dilekce.dilekce_turu,\n      dilekce_basligi: dilekce.dilekce_basligi,\n      hitap_makami: dilekce.hitap_makami,\n      dilekce_metni: dilekce.dilekce_metni,\n\n      eksik_bilgiler:\n        dilekce.eksik_bilgiler ??\n        analiz.eksik_bilgiler ??\n        [],\n\n      gerekli_belgeler: dilekce.gerekli_belgeler ?? [],\n      yol_haritasi: dilekce.yol_haritasi ?? [],\n\n      uyari:\n        dilekce.uyari ??\n        'Bu metin bilgilendirme amacıyla hazırlanmış bir taslaktır ve hukuki tavsiye değildir.'\n    }\n  }\n];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1376,
+        -960
+      ],
+      "id": "ae83ae34-b227-4b78-8a52-41f03aa1d9db",
+      "name": "Dilekçe JSON"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        -1168,
+        -832
+      ],
+      "id": "0df16959-9a8c-4177-9c5f-534bcbe7870b",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "=https://furwstslsdiffgmdqkux.supabase.co/rest/v1/chat_messages?session_id=eq.{{ $('Webhook').first().json.body.session_id }}&order=created_at.asc&select=role,content",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ1cndzdHNsc2RpZmZnbWRxa3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5OTMxMTYsImV4cCI6MjA5ODU2OTExNn0.e3Q1mXF0_ozD20OfwejJHjV7o32SzDl6wFBlYB4ZLXU"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ1cndzdHNsc2RpZmZnbWRxa3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5OTMxMTYsImV4cCI6MjA5ODU2OTExNn0.e3Q1mXF0_ozD20OfwejJHjV7o32SzDl6wFBlYB4ZLXU"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true,
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2128,
+        -700
+      ],
+      "id": "mem-read-0001",
+      "name": "Geçmişi Oku"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Webhook'tan gelen form verisi\nconst body = $('Webhook').first().json.body ?? {};\n\n// Geçmişi güvenli biçimde oku\nlet gecmisRaw = '';\ntry {\n  const items = $('Geçmişi Oku').all();\n  for (const it of items) {\n    let arr = it.json;\n    if (arr && arr.body !== undefined) arr = arr.body;\n    if (arr && !Array.isArray(arr) && arr.role) arr = [arr];\n    if (Array.isArray(arr)) {\n      for (const m of arr) {\n        if (m && m.role && m.content) {\n          const etiket = m.role === 'user' ? 'Kullanici' : 'Asistan';\n          gecmisRaw += etiket + ': ' + m.content + '\\n';\n        }\n      }\n    }\n  }\n} catch (e) {\n  gecmisRaw = '';\n}\nif (!gecmisRaw) {\n  gecmisRaw = '(Onceki konusma yok - bu ilk mesaj.)';\n}\n\n// JSON-guvenli hale getir: prompt'a gomulecegi icin newline/tirnak/backslash temizle\nconst gecmisGuvenli = gecmisRaw\n  .replace(/\\\\/g, ' ')\n  .replace(/\"/g, \"'\")\n  .replace(/[\\r\\n]+/g, ' | ')\n  .replace(/[\\u0000-\\u001F]/g, ' ');\n\n// problem alanini da guvenli yap\nconst problemGuvenli = String(body.problem ?? '')\n  .replace(/\\\\/g, ' ')\n  .replace(/\"/g, \"'\")\n  .replace(/[\\r\\n]+/g, ' ')\n  .replace(/[\\u0000-\\u001F]/g, ' ');\n\nreturn [\n  {\n    json: {\n      session_id: body.session_id ?? 'test-oturum',\n      ad_soyad: String(body.ad_soyad ?? '').replace(/\"/g,\"'\"),\n      secilen_baslik: String(body.secilen_baslik ?? body.alan ?? '').replace(/\"/g,\"'\"),\n      alan: String(body.alan ?? '').replace(/\"/g,\"'\"),\n      problem: problemGuvenli,\n      gecmis: gecmisGuvenli\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -2128,
+        -500
+      ],
+      "id": "mem-ctx-0002",
+      "name": "Bağlam Hazırla"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Kaydedilecek iki mesaj: kullanıcının problemi + asistanın ürettiği dilekçe metni\nconst ctx = $('Bağlam Hazırla').first().json;\nconst sonuc = $('Dilekçe JSON').first().json;\n\nconst session_id = ctx.session_id;\nconst userContent = ctx.problem || '';\nconst assistantContent = sonuc.dilekce_metni || JSON.stringify(sonuc);\n\nreturn [\n  { json: { session_id, role: 'user', content: userContent } },\n  { json: { session_id, role: 'assistant', content: assistantContent } }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1376,
+        -700
+      ],
+      "id": "mem-prep-0003",
+      "name": "Kayıt Hazırla"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://furwstslsdiffgmdqkux.supabase.co/rest/v1/chat_messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ1cndzdHNsc2RpZmZnbWRxa3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5OTMxMTYsImV4cCI6MjA5ODU2OTExNn0.e3Q1mXF0_ozD20OfwejJHjV7o32SzDl6wFBlYB4ZLXU"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ1cndzdHNsc2RpZmZnbWRxa3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5OTMxMTYsImV4cCI6MjA5ODU2OTExNn0.e3Q1mXF0_ozD20OfwejJHjV7o32SzDl6wFBlYB4ZLXU"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ session_id: $json.session_id, role: $json.role, content: $json.content }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -1168,
+        -700
+      ],
+      "id": "mem-write-0004",
+      "name": "Supabase'e Kaydet"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://furwstslsdiffgmdqkux.supabase.co/rest/v1/chat_sessions",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "apikey",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ1cndzdHNsc2RpZmZnbWRxa3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5OTMxMTYsImV4cCI6MjA5ODU2OTExNn0.e3Q1mXF0_ozD20OfwejJHjV7o32SzDl6wFBlYB4ZLXU"
+            },
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZ1cndzdHNsc2RpZmZnbWRxa3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODI5OTMxMTYsImV4cCI6MjA5ODU2OTExNn0.e3Q1mXF0_ozD20OfwejJHjV7o32SzDl6wFBlYB4ZLXU"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Prefer",
+              "value": "resolution=merge-duplicates,return=minimal"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ id: $json.body.session_id }) }}",
+        "options": {
+          "response": {
+            "response": {
+              "neverError": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        -2128,
+        -900
+      ],
+      "id": "mem-session-0005",
+      "name": "Oturumu Oluştur"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Oturumu Oluştur",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Analiz JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analiz JSON": {
+      "main": [
+        [
+          {
+            "node": "Dilekçe Üret",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dilekçe Üret": {
+      "main": [
+        [
+          {
+            "node": "Dilekçe JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dilekçe JSON": {
+      "main": [
+        [
+          {
+            "node": "Kayıt Hazırla",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Geçmişi Oku": {
+      "main": [
+        [
+          {
+            "node": "Bağlam Hazırla",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Bağlam Hazırla": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Kayıt Hazırla": {
+      "main": [
+        [
+          {
+            "node": "Supabase'e Kaydet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase'e Kaydet": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Oturumu Oluştur": {
+      "main": [
+        [
+          {
+            "node": "Geçmişi Oku",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "4737a4c3-24f0-4b9c-9c50-6ea88872c754",
+  "meta": {
+    "instanceId": "79536f90cfbfe018f8d6931086a83f718005ef139b233b622c9759f44212d989"
+  },
+  "id": "DKMxEZUFHKQf2FHN",
+  "tags": [
+    {
+      "updatedAt": "2026-07-13T12:22:55.537Z",
+      "createdAt": "2026-07-13T12:22:55.537Z",
+      "id": "OQyJGhhHrKULNMLS",
+      "name": "Hak Pusulası MVP_1"
+    }
+  ]
+}
