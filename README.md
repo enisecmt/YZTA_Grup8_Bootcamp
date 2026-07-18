@@ -146,6 +146,7 @@ YZTA Grup 8
   ![Sprint 2 Board 2](ProjectManagement/Sprint2Documents/sprint2-board-2.png)
   ![Sprint 2 Board Güncel 1](ProjectManagement/Sprint2Documents/sprint2-board-3.png)
   ![Sprint 2 Board Güncel 2](ProjectManagement/Sprint2Documents/sprint2-board-4.png)
+  ![Sprint 2 Board Güncel 3](ProjectManagement/Sprint2Documents/sprint2-board-5.png)
 
 - **Ürün Durumu:** Ekran görüntüleri ve testler:
 
