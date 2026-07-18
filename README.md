@@ -171,6 +171,7 @@ YZTA Grup 8
 
   ![RAG - Çok-Ajan Zinciri (Tüm Node'lar)](ProjectManagement/Sprint2Documents/rag-tum-node-yesil.png)
   ![RAG - Bilgi Tabanından Veri Çekme](ProjectManagement/Sprint2Documents/rag-bilgi-getir-cikti.png)
+  ![RAG - Bilgi Birleştirme](ProjectManagement/Sprint2Documents/rag-bilgi-birlestir-cikti.png)
   ![RAG - Dilekçe Çıktısı 1](ProjectManagement/Sprint2Documents/rag-dilekce-cikti.png)
   ![RAG - Dilekçe Çıktısı 2](ProjectManagement/Sprint2Documents/rag-dilekce-cikti2.png)
 
