@@ -169,8 +169,8 @@ YZTA Grup 8
   **RAG (Bilgi Tabanına Dayalı Üretim) + Çok-Ajan Orkestrasyonu:**
   Sistem, kullanıcının derdini sınıflandırdıktan sonra Supabase'deki bilgi tabanından ilgili kategorinin doğrulanmış bilgisini (yetkili merci, süre, gerekli belgeler) otomatik çekip dilekçe ve yol haritası üretimine kaynak olarak vermektedir. Böylece çıktı, modelin ezberine değil gerçek bilgi tabanına dayanır. Akış, farklı görevlere sahip AI bileşenlerinin (sınıflandırıcı → bilgi getirici → dilekçe/yol haritası yazarı) tek bir zincirde koordineli çalıştığı çok-ajan yapısındadır.
 
-  ![RAG - Bilgi Tabanından Veri Çekme](ProjectManagement/Sprint2Documents/rag-bilgi-getir-cikti.png)
   ![RAG - Çok-Ajan Zinciri (Tüm Node'lar)](ProjectManagement/Sprint2Documents/rag-tum-node-yesil.png)
+  ![RAG - Bilgi Tabanından Veri Çekme](ProjectManagement/Sprint2Documents/rag-bilgi-getir-cikti.png)
   ![RAG - Dilekçe Çıktısı 1](ProjectManagement/Sprint2Documents/rag-dilekce-cikti.png)
   ![RAG - Dilekçe Çıktısı 2](ProjectManagement/Sprint2Documents/rag-dilekce-cikti2.png)
 
