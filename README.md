@@ -166,6 +166,18 @@ YZTA Grup 8
   ![n8n Geçmiş Okundu](ProjectManagement/Sprint2Documents/hafiza-n8n-gecmis-okundu.png)
   Workflow dosyası: [Hak_Pusulasi_Hafizali_Diyalog.json](ProjectManagement/Sprint2Documents/Hak_Pusulasi_Hafizali_Diyalog.json)
 
+  **RAG (Bilgi Tabanına Dayalı Üretim) + Çok-Ajan Orkestrasyonu:**
+  Sistem, kullanıcının derdini sınıflandırdıktan sonra Supabase'deki bilgi tabanından ilgili kategorinin doğrulanmış bilgisini (yetkili merci, süre, gerekli belgeler) otomatik çekip dilekçe ve yol haritası üretimine kaynak olarak vermektedir. Böylece çıktı, modelin ezberine değil gerçek bilgi tabanına dayanır. Akış, farklı görevlere sahip AI bileşenlerinin (sınıflandırıcı → bilgi getirici → dilekçe/yol haritası yazarı) tek bir zincirde koordineli çalıştığı çok-ajan yapısındadır.
+
+  ![RAG - Bilgi Tabanından Veri Çekme](ProjectManagement/Sprint2Documents/rag-bilgi-getir-cikti.png)
+  ![RAG - Çok-Ajan Zinciri (Tüm Node'lar)](ProjectManagement/Sprint2Documents/rag-tum-node-yesil.png)
+  ![RAG - Dilekçe Çıktısı 1](ProjectManagement/Sprint2Documents/rag-dilekce-cikti.png)
+  ![RAG - Dilekçe Çıktısı 2](ProjectManagement/Sprint2Documents/rag-dilekce-cikti2.png)
+
+  Farklı kategorilerde (Online Alışveriş, Kira, Abonelik, Bilgi Edinme) yapılan RAG testleri: [rag-testleri.md](ProjectManagement/Sprint2Documents/rag-testleri.md)
+
+  Güncel workflow (hafıza + RAG): [Hak_Pusulasi_Hafizali_RAG.json](ProjectManagement/Sprint2Documents/Hak_Pusulasi_Hafizali_RAG.json)
+
   **Prompt Testleri (AI Studio):**
   ![Slot-Filling (Eksik Bilgi Sorma)](ProjectManagement/Sprint2Documents/slot-filling-test.png)
   ![Hafızalı Diyalog Testi 1](ProjectManagement/Sprint2Documents/hafiza-diyalog-test1.png)
