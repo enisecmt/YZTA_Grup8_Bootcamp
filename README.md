@@ -139,7 +139,7 @@ YZTA Grup 8
 
 - **Çalışma prensibi:** n8n Cloud'un 14 günlük denemesi final teslimine (2 Ağustos) denk gelecek şekilde Sprint 3 başında aktive edilecektir. Bu nedenle Sprint 2 boyunca tüm ajan mantığı local n8n ve AI Studio üzerinde geliştirilip manuel olarak test edilmektedir; canlı arayüz-backend bağlantısı Sprint 3'e planlanmıştır.
 
-- **Daily Scrum:** <!-- Sprint 2 daily scrum notları buraya eklenecek -->
+- **Daily Scrum:** [DailyScrumMeetingNotesSprint2.pdf](ProjectManagement/Sprint2Documents/DailyScrumMeetingNotesSprint2.pdf)
 
 - **Sprint board update:**
   ![Sprint 2 Board 1](ProjectManagement/Sprint2Documents/sprint2-board-1.png)
