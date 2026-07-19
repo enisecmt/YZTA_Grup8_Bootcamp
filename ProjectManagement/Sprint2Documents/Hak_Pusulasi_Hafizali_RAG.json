@@ -273,7 +273,7 @@
     {
       "parameters": {
         "method": "GET",
-        "url": "=https://furwstslsdiffgmdqkux.supabase.co/rest/v1/bilgi_tabani?kategori=eq.{{ encodeURIComponent($json.kategori) }}&select=kategori,alt_kategori,yetkili_merci,basvuru_suresi,gerekli_belgeler",
+        "url": "=https://furwstslsdiffgmdqkux.supabase.co/rest/v1/bilgi_tabani?kategori=eq.{{ encodeURIComponent($json.kategori) }}&select=kategori,alt_kategori,yetkili_merci,basvuru_suresi,gerekli_belgeler,mevzuat_ozeti",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -306,7 +306,7 @@
     },
     {
       "parameters": {
-        "jsCode": "// Analiz JSON çıktısı (kullanıcı + sınıflandırma verisi)\nconst analiz = $('Analiz JSON').first().json;\n\n// Bilgi Getir'den gelen bilgi tabanı satır(lar)ı\nlet bilgi = [];\ntry {\n  const items = $('Bilgi Getir').all();\n  for (const it of items) {\n    let arr = it.json;\n    if (arr && arr.body !== undefined) arr = arr.body;\n    if (arr && !Array.isArray(arr) && arr.kategori) arr = [arr];\n    if (Array.isArray(arr)) bilgi = bilgi.concat(arr);\n  }\n} catch (e) {\n  bilgi = [];\n}\n\n// Bilgi tabanından gelen doğrulanmış bilgiyi tek metne çevir (dilekçe prompt'una verilecek)\nlet bilgiMetni = '';\nif (bilgi.length > 0) {\n  for (const b of bilgi) {\n    bilgiMetni += 'Yetkili merci: ' + (b.yetkili_merci || '-') + '. ';\n    bilgiMetni += 'Başvuru süresi: ' + (b.basvuru_suresi || '-') + '. ';\n    bilgiMetni += 'Gerekli belgeler: ' + (b.gerekli_belgeler || '-') + '. ';\n    if (b.alt_kategori) bilgiMetni += 'Alt kategori: ' + b.alt_kategori + '. ';\n  }\n  bilgiMetni = bilgiMetni.replace(/\"/g, \"'\").replace(/[\\r\\n]+/g, ' ');\n} else {\n  bilgiMetni = '(Bilgi tabanında bu kategori için kayıt bulunamadı.)';\n}\n\n// Analiz verisinin tamamını koru, üstüne doğrulanmış bilgi tabanı verisini ekle\nreturn [\n  {\n    json: {\n      ...analiz,\n      bilgi_tabani: bilgiMetni\n    }\n  }\n];\n"
+        "jsCode": "// Analiz JSON çıktısı (kullanıcı + sınıflandırma verisi)\nconst analiz = $('Analiz JSON').first().json;\n\n// Bilgi Getir'den gelen bilgi tabanı satır(lar)ı\nlet bilgi = [];\ntry {\n  const items = $('Bilgi Getir').all();\n  for (const it of items) {\n    let arr = it.json;\n    if (arr && arr.body !== undefined) arr = arr.body;\n    if (arr && !Array.isArray(arr) && arr.kategori) arr = [arr];\n    if (Array.isArray(arr)) bilgi = bilgi.concat(arr);\n  }\n} catch (e) {\n  bilgi = [];\n}\n\n// Bilgi tabanından gelen doğrulanmış bilgiyi tek metne çevir (dilekçe prompt'una verilecek)\nlet bilgiMetni = '';\nif (bilgi.length > 0) {\n  for (const b of bilgi) {\n    bilgiMetni += 'Yetkili merci: ' + (b.yetkili_merci || '-') + '. ';\n    bilgiMetni += 'Başvuru süresi: ' + (b.basvuru_suresi || '-') + '. ';\n    bilgiMetni += 'Gerekli belgeler: ' + (b.gerekli_belgeler || '-') + '. ';\n    if (b.alt_kategori) bilgiMetni += 'Alt kategori: ' + b.alt_kategori + '. ';\n    if (b.mevzuat_ozeti) bilgiMetni += 'Mevzuat özeti: ' + b.mevzuat_ozeti + ' ';\n  }\n  bilgiMetni = bilgiMetni.replace(/\"/g, \"'\").replace(/[\\r\\n]+/g, ' ');\n} else {\n  bilgiMetni = '(Bilgi tabanında bu kategori için kayıt bulunamadı.)';\n}\n\n// Analiz verisinin tamamını koru, üstüne doğrulanmış bilgi tabanı verisini ekle\nreturn [\n  {\n    json: {\n      ...analiz,\n      bilgi_tabani: bilgiMetni\n    }\n  }\n];\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
