@@ -190,24 +190,28 @@ YZTA Grup 8
   ![Hafızalı Diyalog Testi 2](ProjectManagement/Sprint2Documents/hafiza-diyalog-test2.png)
   Yol haritası üretim testleri: [Yol Haritası Testleri](ProjectManagement/Sprint2Documents/yol-haritasi-testleri.md)
 
-- **Sprint Review:**
-  Bu sprintte ürünün yapay zekâ çekirdeği büyük ölçüde tamamlandı. Aşağıdaki işler bitirildi:
-  - Hafızalı diyalog: Kullanıcının önceki mesajlarını hatırlayan, çok turlu çalışan akış (n8n + Supabase) kuruldu ve test edildi.
-  - RAG (bilgi tabanına dayalı üretim): Sınıflandırma sonrası ilgili kategorinin doğrulanmış bilgisi (mercii, süre, gerekli belgeler, mevzuat özeti) Supabase'den çekilip dilekçe ve yol haritası üretimine kaynak olarak verildi. 4 farklı kategoride test edildi.
-  - Çok-ajan orkestrasyon: Sınıflandırıcı → bilgi getirici → dilekçe/yol haritası yazarı zinciri tek akışta koordineli çalışıyor.
-  - Slot-filling: Sistem eksik bilgileri tespit edip kullanıcıya soruyor, dilekçede eksikleri işaretliyor.
-  - Arayüz v2: Sesli giriş, diyalog ekranı, yol haritası ve belge kontrol listesi, geçmiş ekranı ve backend bağlantı hazırlığı (session_id, webhook payload) tamamlandı.
-  - Bilgi tabanı: Ahmet tarafından hazırlanan mercii, mevzuat ve belge bilgileri Supabase'e aktarıldı ve RAG'a entegre edildi.
-  - Uçtan uca manuel test yapıldı; kritik bir hata gözlenmedi.
+* Sprint Review:
+Sprint 2 boyunca ürünün yapay zekâ çekirdeği geliştirilip birbirine bağlandı ve doğrulandı:
+   * Hafızalı diyalog akışı (n8n + Supabase) kuruldu; sistem önceki mesajları hatırlayarak çok turlu çalışıyor, iki turlu testte doğrulandı.
+   * RAG (bilgi tabanına dayalı üretim) kuruldu; sınıflandırma sonrası ilgili kategorinin doğrulanmış bilgisi (mercii, süre, gerekli belgeler, mevzuat özeti) Supabase'den çekilip dilekçe ve yol haritası üretimine kaynak olarak verildi. 4 farklı kategoride test edildi.
+   * Çok-ajan orkestrasyon tamamlandı; sınıflandırıcı → bilgi getirici → dilekçe/yol haritası yazarı zinciri tek akışta koordineli çalışıyor.
+   * Slot-filling geliştirildi; sistem eksik bilgileri tespit edip kullanıcıya soruyor ve dilekçede eksikleri işaretliyor.
+   * Arayüz v2 (Lovable) tamamlandı: sesli giriş, diyalog (soru-cevap) ekranı, yol haritası ve belge kontrol listesi, geçmiş ekranı ve backend bağlantı hazırlığı (session_id, webhook payload).
+   * Bilgi tabanı içeriği (mercii, mevzuat özetleri, gerekli belgeler) Supabase'e aktarıldı ve RAG'a entegre edildi.
+   * Uçtan uca manuel test yapıldı; kritik bir hata gözlenmedi.
+   
+Alınan kararlar:
+   * n8n barındırma kararı netleştirildi: n8n Cloud'un 14 günlük deneme süresi final teslimine denk gelecek şekilde Sprint 3 başında aktive edilecektir. Bu nedenle Sprint 2 boyunca tüm zekâ katmanı local n8n ve AI Studio üzerinde geliştirilip manuel test edilmiştir.
+   * Arayüzün n8n akışına canlı bağlanması (WEBHOOK_URL entegrasyonu) Sprint 3'e taşınmıştır; arayüz tarafı bağlantıya hazır hale getirilmiş, gerçek adres Cloud'a geçişte tanımlanacaktır.
+   * Bilgi tabanındaki gerçek dilekçe şablon metinlerinin (TMP-xxx) veritabanına aktarımı Sprint 3'e bırakılmıştır; mevcut haliyle mercii, mevzuat ve belge bilgileri dilekçe üretimi için yeterli çalışmaktadır.
+   * Tanıtım (demo) videosunun kaydı Sprint 3'e planlanmıştır.
+Sprint Review katılımcıları: Ahmet Kavruk, Enise Cömet, Aleyna Tandoğan, İlayda Yılmaz, Himmet Can Umutlu
 
-  Çalışma prensibi gereği tüm zekâ katmanı Sprint 2 boyunca local n8n ve AI Studio üzerinde geliştirilip manuel test edildi (n8n Cloud'un 14 günlük denemesi final teslimine denk gelecek şekilde Sprint 3'te aktive edilecektir).
-
-  Sprint 3'e devreden işler: n8n Cloud'a taşıma, canlı arayüz-backend bağlantısı ve tanıtım (demo) videosunun kaydı.
-
-- **Sprint Retrospective:**
-  - İyi giden: Ekip, ücretli araç kullanmadan (tümü ücretsiz katman) hafıza ve RAG dahil ileri düzey bir yapay zekâ akışını çalışır hale getirdi. Local geliştirme sayesinde n8n deneme süresi korunarak hızlı ilerlendi. Backend (hafıza, RAG) ve frontend (arayüz v2) paralel yürütüldü.
-  - Geliştirilmeye açık: Bazı görevler arasında bağımlılık (içerik → bilgi tabanı → RAG) olduğu için zamanlama zaman zaman birbirini bekletti. Bilgi tabanı içeriğinin baştan doğrudan veritabanına yazılması, sonradan aktarım ihtiyacını azaltabilirdi.
-  - Sprint 3 için aksiyonlar: n8n Cloud'a geçiş ve keep-alive kurulumu, arayüzün canlı backend'e bağlanması, tek-atış/çok-tur akış uyumlaması, doğrulayıcı (self-check) katmanı ve tanıtım videosu.
+* Sprint Retrospective:
+   * İyi giden: Ekip, ücretli araç ve kredi kartı kullanmadan (tümü ücretsiz katman) hafıza ve RAG dahil ileri düzey bir yapay zekâ akışını çalışır hale getirdi; bu, bootcamp kısıtları içinde önemli bir başarıdır.
+   * İyi giden: Local geliştirme tercihi sayesinde n8n deneme süresi korundu ve zekâ katmanı beklemeden geliştirildi; backend (hafıza, RAG) ve frontend (arayüz v2) paralel yürütüldü.
+   * Geliştirilmeye açık: Bazı görevler arasında bağımlılık (içerik → bilgi tabanı → RAG) olduğu için zamanlama zaman zaman birbirini bekletti. Bilgi tabanı içeriğinin baştan doğrudan veritabanına yazılması, sonradan aktarım ihtiyacını azaltabilirdi.
+   * Sprint 3 için aksiyonlar: n8n Cloud'a geçiş ve keep-alive kurulumu, arayüzün canlı backend'e bağlanması, tek-atış/çok-tur akış uyumlaması, doğrulayıcı (self-check) katmanı ve tanıtım videosu.
 
 # Sprint 3
 
