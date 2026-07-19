@@ -201,12 +201,14 @@ YZTA Grup 8
    - Bilgi tabanı içeriği (mercii, mevzuat özetleri, gerekli belgeler) Supabase'e aktarıldı ve RAG'a entegre edildi.
    - Uçtan uca manuel test yapıldı; kritik bir hata gözlenmedi.
    
-**Alınan kararlar:**
-   - n8n barındırma kararı netleştirildi: n8n Cloud'un 14 günlük deneme süresi final teslimine denk gelecek şekilde Sprint 3 başında aktive edilecektir. Bu nedenle Sprint 2 boyunca tüm zekâ katmanı local n8n ve AI Studio üzerinde geliştirilip manuel test edilmiştir.
-   - Arayüzün n8n akışına canlı bağlanması (WEBHOOK_URL entegrasyonu) Sprint 3'e taşınmıştır; arayüz tarafı bağlantıya hazır hale getirilmiş, gerçek adres Cloud'a geçişte tanımlanacaktır.
-   - Bilgi tabanındaki gerçek dilekçe şablon metinlerinin (TMP-xxx) veritabanına aktarımı Sprint 3'e bırakılmıştır; mevcut haliyle mercii, mevzuat ve belge bilgileri dilekçe üretimi için yeterli çalışmaktadır.
-   - Tanıtım (demo) videosunun kaydı Sprint 3'e planlanmıştır.
-**Sprint Review katılımcıları:** Ahmet Kavruk, Enise Cömet, Aleyna Tandoğan, İlayda Yılmaz, Himmet Can Umutlu
+   **Alınan kararlar:**
+
+   * n8n barındırma kararı netleştirildi: n8n Cloud'un 14 günlük deneme süresi final teslimine denk gelecek şekilde Sprint 3 başında aktive edilecektir. Bu nedenle Sprint 2 boyunca tüm zekâ katmanı local n8n ve AI Studio üzerinde geliştirilip manuel test edilmiştir.
+   * Arayüzün n8n akışına canlı bağlanması (WEBHOOK_URL entegrasyonu) Sprint 3'e taşınmıştır; arayüz tarafı bağlantıya hazır hale getirilmiş, gerçek adres Cloud'a geçişte tanımlanacaktır.
+   * Bilgi tabanındaki gerçek dilekçe şablon metinlerinin (TMP-xxx) veritabanına aktarımı Sprint 3'e bırakılmıştır; mevcut haliyle mercii, mevzuat ve belge bilgileri dilekçe üretimi için yeterli çalışmaktadır.
+   * Tanıtım (demo) videosunun kaydı Sprint 3'e planlanmıştır.
+ 
+  **Sprint Review katılımcıları:** Ahmet Kavruk, Enise Cömet, Aleyna Tandoğan, İlayda Yılmaz, Himmet Can Umutlu
 
 - **Sprint Retrospective:**
    - İyi giden: Ekip, ücretli araç ve kredi kartı kullanmadan (tümü ücretsiz katman) hafıza ve RAG dahil ileri düzey bir yapay zekâ akışını çalışır hale getirdi; bu, bootcamp kısıtları içinde önemli bir başarıdır.
