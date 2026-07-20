@@ -218,4 +218,29 @@ YZTA Grup 8
 
 # Sprint 3
 
+- **Sprint Notları:** Sprint 3'ün ana teması entegrasyon ve canlıya almadır. Sprint 2'de local ortamda geliştirilen yapay zekâ katmanı (hafıza + RAG + çok-ajan) n8n Cloud'a taşınacak, arayüz canlı backend'e bağlanacak, doğrulayıcı (self-check) katman ve hukuki uyarı eklenecek, ürün uçtan uca çalışır ve sunulabilir hale getirilecektir. (20 Temmuz – 2 Ağustos 2026)
+
+- **Sprint içinde tamamlanması tahmin edilen puan:** 50
+
+- **Puan tamamlama mantığı:** Story'ler Fibonacci yöntemiyle (3, 5, 8) puanlanmıştır. Entegrasyon ağırlıklı, teknik riski ve bağımlılığı yüksek işlere (Cloud'a taşıma, doğrulayıcı ajan, canlı bağlantı, QA) 8; orta kapsamlı işlere 5; net ve sınırlı işe (hukuki uyarı) 3 puan verilmiştir. Her story'nin puanı sprint toplamının yarısından azdır.
+
+- **Backlog düzeni ve Story seçimleri:** Sprint 2'de bilinçli olarak Sprint 3'e bırakılan işler (Cloud'a taşıma, canlı arayüz-backend bağlantısı, doğrulayıcı katman, hukuki uyarı, tanıtım videosu) bu sprintin story'lerini oluşturur. Görevler her story issue'sunun içinde checklist olarak takip edilmektedir.
+
+- **Çalışma prensibi:** n8n Cloud'un 14 günlük ücretsiz denemesi Sprint 3 başında aktive edilmiştir; böylece deneme, final teslimine (2 Ağustos) kadar açık kalır. İlk iş, Sprint 2'de local geliştirilen workflow'ların Cloud'a taşınmasıdır.
+
+- **Daily Scrum:** <!-- Sprint 3 daily scrum notları buraya eklenecek -->
+
+- **Sprint board update:**
+  ![Sprint 3 Board](ProjectManagement/Sprint3Documents/sprint3-board.png)
+  ![Sprint 3 Board 1](ProjectManagement/Sprint3Documents/sprint3-board-1.png)
+
+- **Ürün Durumu:** <!-- Sprint 3 çıktı görselleri ve testleri sprint ilerledikçe eklenecek -->
+
+- **Sprint Review:** <!-- Sprint sonunda (2 Ağustos) doldurulacak -->
+  Alınan kararlar:
+  Sprint Review katılımcıları:
+
+- **Sprint Retrospective:** <!-- Sprint sonunda doldurulacak -->
+  -
+
 ---
