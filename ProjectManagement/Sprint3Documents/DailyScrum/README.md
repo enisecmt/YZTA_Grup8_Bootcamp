@@ -1,5 +1,6 @@
 # Sprint 3 — Daily Scrum
 
-Bu klasör, Sprint 3 (20 Temmuz – 2 Ağustos 2026) günlük scrum toplantılarının ekran görüntülerini içerir. Toplantılar WhatsApp üzerinden yazılı yapılmıştır.
+Günlük scrum toplantıları WhatsApp üzerinden yazılı yapılmıştır. Ekran görüntüleri gün gün aşağıdadır.
 
+## 21 Temmuz 2026 — Salı
 ![21 Temmuz Daily Scrum](sprint3-scrum-21temmuz.png)
