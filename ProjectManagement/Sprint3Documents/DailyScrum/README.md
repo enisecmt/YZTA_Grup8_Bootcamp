@@ -10,3 +10,5 @@ Günlük scrum toplantıları WhatsApp üzerinden yazılı yapılmıştır. Ekra
 ![23 Temmuz Daily Scrum](sprint3-scrum-23temmuz.png)
 ## 24 Temmuz 2026 — Cuma
 ![24 Temmuz Daily Scrum](sprint3-scrum-24temmuz.png)
+## 25 Temmuz 2026 — Cumartesi
+![25 Temmuz Daily Scrum](sprint3-scrum-25temmuz.png)
