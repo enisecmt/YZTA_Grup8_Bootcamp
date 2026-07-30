@@ -228,19 +228,79 @@ YZTA Grup 8
 
 - **Çalışma prensibi:** n8n Cloud'un 14 günlük ücretsiz denemesi Sprint 3 başında aktive edilmiştir; böylece deneme, final teslimine (2 Ağustos) kadar açık kalır. İlk iş, Sprint 2'de local geliştirilen workflow'ların Cloud'a taşınmasıdır.
 
-- **Daily Scrum:** <!-- Sprint 3 daily scrum notları buraya eklenecek -->
+- **Daily Scrum:** Daily Scrum toplantıları önceki sprintlerde olduğu gibi WhatsApp üzerinden yazılı sürdürülmüştür. Sprint 3 günlük kayıtları: [Sprint 3 Daily Scrum Notları](ProjectManagement/Sprint3Documents/DailyScrum/README.md)
 
 - **Sprint board update:**
   ![Sprint 3 Board](ProjectManagement/Sprint3Documents/sprint3-board.png)
   ![Sprint 3 Board 1](ProjectManagement/Sprint3Documents/sprint3-board-1.png)
+  ![Sprint 3 Board 2](ProjectManagement/Sprint3Documents/sprint3-board-2.png)
 
-- **Ürün Durumu:** <!-- Sprint 3 çıktı görselleri ve testleri sprint ilerledikçe eklenecek -->
+- **Ürün Durumu:** Sprint 3'te ürün ilk kez uçtan uca **canlı** çalışır hale getirildi. Arayüzden gelen gerçek istek n8n Cloud üzerinden Gemini ve Supabase'e ulaşıyor; sınıflandırma → RAG (bilgi tabanından doğrulanmış bilgi) → dilekçe/yol haritası üretimi → doğrulayıcı (self-check) katmanı → cevap zinciri tek akışta işliyor ve sonuç arayüze dönüyor.
 
-- **Sprint Review:** <!-- Sprint sonunda (2 Ağustos) doldurulacak -->
-  Alınan kararlar:
-  Sprint Review katılımcıları:
+  **Canlı n8n Cloud Workflow'u (hafıza + RAG + self-check):** Sprint 2'de local geliştirilen workflow n8n Cloud'a taşındı; Gemini ve Supabase bağlantıları Cloud ortamında yeniden kuruldu. Akışa Sprint 3'te yeni bir **doğrulayıcı (self-check) ajanı** eklendi: üretilen dilekçe, bilgi tabanındaki merci/mevzuat bilgisiyle tutarlılık ve olası uydurma (halüsinasyon) açısından denetlenip sonuç çıktıya (`self_check`) ekleniyor. Tüm node'ların Cloud'da uçtan uca yeşil çalıştığı doğrulandı.
 
-- **Sprint Retrospective:** <!-- Sprint sonunda doldurulacak -->
-  -
+  ![Canlı Workflow - Tüm Node'lar Yeşil](ProjectManagement/Sprint3Documents/sprint3-workflow-tum-node-yesil.png)
+
+  **Canlı Uçtan Uca Testler:** Arayüzden gerçek isteklerle farklı dert türleri test edildi; her senaryoda sistem doğru kategoriyi belirleyip bilgi tabanına dayalı dilekçe ve yol haritası üretti.
+
+  Kira / Depozito:
+  ![Kira Testi 1](ProjectManagement/Sprint3Documents/test-kira.png)
+  ![Kira Testi 2](ProjectManagement/Sprint3Documents/test-kira-1.png)
+  ![Kira Testi 3](ProjectManagement/Sprint3Documents/test-kira-2.png)
+  ![Kira Testi 4](ProjectManagement/Sprint3Documents/test-kira-3.png)
+
+  Abonelik İptali:
+  ![Abonelik Testi 1](ProjectManagement/Sprint3Documents/test-abonelik.png)
+  ![Abonelik Testi 2](ProjectManagement/Sprint3Documents/test-abonelik-1.png)
+  ![Abonelik Testi 3](ProjectManagement/Sprint3Documents/test-abonelik-2.png)
+
+  **Halüsinasyon / Guardrail Testi:** Bilgi tabanında karşılığı olmayan, kapsam dışı bir dert girildiğinde sistemin uydurma kanun/merci üretmediği doğrulandı. Sistem başvuru merciini "Belirlenemedi" olarak işaretledi, kullanıcının vermediği bilgileri `[BİLGİ GEREKLİ: ...]` ile gösterdi ve hukuki uyarıyı öne çıkardı. Bu, RAG'ın ve doğrulayıcı katmanın halüsinasyonu sınırladığını canlı ortamda göstermektedir. (RAG öncesi/sonrası karşılaştırması Sprint 2 bölümünde görsellerle ayrıca ele alınmıştır.)
+
+  ![Halüsinasyon Testi 1](ProjectManagement/Sprint3Documents/test-halusinasyon.png)
+  ![Halüsinasyon Testi 2](ProjectManagement/Sprint3Documents/test-halusinasyon-1.png)
+  ![Halüsinasyon Testi 3](ProjectManagement/Sprint3Documents/test-halusinasyon-2.png)
+
+  **Hukuki Uyarı:** Sorumluluk reddi metni hem giriş ekranında (kullanıcı akışa başlamadan önce) hem de üretilen dilekçe çıktısının altında gösterilmektedir.
+
+  ![Hukuki Uyarı - Giriş Ekranı](ProjectManagement/Sprint3Documents/hukuki-uyari-giris.png)
+
+  **Keep-Alive:** Supabase'in 7 günlük hareketsizlikte duraklamasını önlemek için n8n Cloud'da günlük çalışan bir Schedule Trigger workflow'u kuruldu; Cloud 7/24 açık olduğu için bu kalıcı bir çözümdür.
+
+  **Güncel Workflow Dosyası:** [Hak_Pusulasi_Cloud_Final.json](ProjectManagement/Sprint3Documents/Hak_Pusulasi_Cloud_Final.json)
+
+- **Sprint Review:**
+
+  Sprint 3 boyunca, Sprint 2'de local ortamda geliştirilen yapay zekâ katmanı canlıya alındı ve ürün uçtan uca çalışır, sunulabilir hale getirildi:
+
+  * n8n Cloud aktive edildi ve local workflow (hafıza + RAG + çok-ajan) Cloud'a taşındı; Gemini ve Supabase bağlantıları Cloud ortamında yeniden kurulup uçtan uca doğrulandı.
+  * Production webhook üretildi ve arayüz (Lovable) bu canlı adrese bağlandı; mock cevaplar kaldırıldı, arayüz artık gerçek n8n çıktısını (dilekçe metni, yol haritası, gerekli belgeler, eksik bilgiler) gösteriyor.
+  * Doğrulayıcı (self-check) ajanı kuruldu; üretilen dilekçe, bilgi tabanıyla tutarlılık ve olası uydurma açısından denetlenip sonuç çıktıya ekleniyor.
+  * Supabase keep-alive'ı Cloud'da kuruldu; veritabanının hareketsizlikte duraklaması önlendi.
+  * Hukuki uyarı hem giriş ekranına hem dilekçe çıktısına eklendi.
+  * Arayüze yükleniyor göstergesi ve hata/zaman aşımı yönetimi eklendi.
+  * Dilekçe şablon referansları bilgi tabanının `sablon_metin` alanına aktarıldı.
+  * Canlı ortamda farklı dert türleriyle (online alışveriş, kira, abonelik) uçtan uca testler ve bir halüsinasyon/guardrail testi yapıldı; sistem kapsam dışı derde uydurma üretmeden "Belirlenemedi" yanıtı verdi.
+
+  **Alınan kararlar:**
+
+  * **Tek-atış / çok-tur uyumu:** Arayüz soru-cevapları kullanıcıdan toplayıp yapıya uygun biçimde backend'e iletecek şekilde uyumlandı; hafıza altyapısı (chat_sessions / chat_messages) korunarak demo akışı sade ve kararlı tutuldu.
+  * Ürünün çalışması için kritik olmayan bazı işler bilinçli olarak sınırlı tutuldu (aşağıda dürüstçe belirtilmiştir); öncelik, uçtan uca canlı ve güvenilir bir akışa verildi.
+
+  **Tamamlanamayan / sınırlı kalan işler (dürüst değerlendirme):**
+
+  * QA test havuzunun tamamı yerine kritik kategoriler ve halüsinasyon senaryosu canlı sistemde test edildi; geniş senaryo taraması gelecek bir iterasyona bırakılmıştır.
+  * "Geçmiş talepler" ekranı şu an örnek veriyle çalışmakta olup canlı veritabanına tam bağlanması tamamlanamamıştır.
+
+  **Sprint Review katılımcıları:** Ahmet Kavruk, Enise Cömet, Aleyna Tandoğan, İlayda Yılmaz, Himmet Can Umutlu
+
+- **Sprint Retrospective:**
+
+  * İyi giden: Sprint 2'de bilinçli olarak ertelenen entegrasyon işleri (Cloud'a taşıma, canlı bağlantı, doğrulayıcı katman) bu sprintte planlandığı sırayla tamamlandı ve ürün ilk kez uçtan uca canlı çalıştı.
+  * İyi giden: n8n Cloud denemesi doğru zamanlandığı için (final teslimine denk gelecek şekilde) canlı ortam kesintisiz kullanılabildi; tüm zincir ücretsiz katman içinde (kredi kartı kullanmadan) çalışır hale getirildi.
+  * İyi giden: Doğrulayıcı (self-check) katmanı, ürünün güvenilirliğini somut biçimde artırdı; halüsinasyon testinde sistemin uydurma üretmeden "Belirlenemedi" demesi bunu doğruladı.
+  * Zorlanılan: Canlı entegrasyonda servisler arası küçük uyum sorunları (cevap formatının arayüzle eşleşmesi, JSON kontrol karakteri, API anahtarı türü) zaman zaman vakit aldı; çoğu, çıktının kaynağı adım adım izlenerek çözüldü.
+  * Zorlanılan: Entegrasyon bağımlılıkları arttığı için bazı işler birbirini bekletti; canlı bağlantı kurulmadan bazı testler tam yapılamadı.
+  * Sonraki iterasyon için: Geniş QA senaryo taramasının tamamlanması, "geçmiş talepler" ekranının canlı veriye bağlanması ve doğrulayıcı katmanın kullanıcıya görünür bir güven göstergesine dönüştürülmesi.
+
 
 ---
