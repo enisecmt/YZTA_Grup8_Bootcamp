@@ -26,3 +26,5 @@ Günlük scrum toplantıları WhatsApp üzerinden yazılı yapılmıştır. Ekra
 ![31 Temmuz Daily Scrum](sprint3-scrum-31temmuz.png)
 ## 1 Ağustos 2026 — Cumartesi
 ![1 Ağustos Daily Scrum](sprint3-scrum-1agustos.png)
+## 2 Ağustos 2026 — Pazar
+Sprint 3 bugün itibarıyla tamamlandı. Ürün uçtan uca canlı çalışır durumda: arayüz canlıya alındı (hakpusulasi.lovable.app), n8n Cloud üzerindeki workflow Gemini ve Supabase ile entegre, self-check ve hukuki uyarı aktif. Tanıtım videosu hazırlanıp YouTube'a yüklendi. Son olarak README, board ve teslim dosyaları gözden geçirildi ve final teslim gerçekleştirildi.
