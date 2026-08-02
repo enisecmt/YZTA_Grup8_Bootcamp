@@ -20,6 +20,10 @@ YZTA Grup 8
 
 - Hak Pusulası, vatandaşın günlük dille anlattığı bir derdi (iade, abonelik iptali, kira, komşu, kamu hizmeti şikâyeti vb.) alıp; hangi mercie, hangi belgelerle, hangi süre içinde başvuracağını belirleyen çok-ajanlı bir yapay zekâ asistanıdır. Kullanıcıya resmi üslupta hazır bir dilekçe ve adım adım yol haritası üretir.
 
+**🎥 Tanıtım Videosu:** [YouTube'da izle](https://www.youtube.com/watch?v=XI2VGcPDzAY)
+
+**🔗 Canlı Demo:** [hakpusulasi.lovable.app](https://hakpusulasi.lovable.app)
+
 ## Ürün Özellikleri
 
 - Yazılı ve sesli giriş
