@@ -29,9 +29,10 @@ YZTA Grup 8
 - Yazılı ve sesli giriş
 - Otomatik dert sınıflandırma ve doğru mercie yönlendirme
 - Eksik bilgiyi soran çok adımlı, hafızalı ajan
-- RAG destekli resmi dilekçe / ihtarname / başvuru metni üretimi
+- RAG destekli (bilgi tabanına dayalı) resmi dilekçe / ihtarname / başvuru metni üretimi
 - Adım adım yol haritası + belge kontrol listesi + süre uyarısı
-- Çıktı öncesi otomatik eksiklik doğrulaması
+- Self-check (doğrulayıcı ajan) ile tutarlılık ve halüsinasyon kontrolü
+- Kapsam dışı taleplerde uydurma yerine "belirlenemedi" yanıtı
 
 ## Hedef Kitle
 
@@ -42,11 +43,11 @@ YZTA Grup 8
 
 ## Kullanılan Teknolojiler
 
-- **Arayüz:** Lovable / Netlify
-- **Orkestrasyon:** n8n (local)
+- **Arayüz:** Lovable
+- **Orkestrasyon:** n8n (Cloud)
 - **Yapay Zekâ:** Google Gemini
-- **Bilgi Tabanı:** Google Sheets
-- **Veritabanı:** Supabase
+- **Bilgi Tabanı & Veritabanı:** Supabase (bilgi tabanı, oturum hafızası)
+- **Doğrulama:** Self-check (doğrulayıcı ajan) katmanı
 
 ## Product Backlog URL
 
