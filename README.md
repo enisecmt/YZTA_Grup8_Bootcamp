@@ -239,6 +239,7 @@ YZTA Grup 8
   ![Sprint 3 Board](ProjectManagement/Sprint3Documents/sprint3-board.png)
   ![Sprint 3 Board 1](ProjectManagement/Sprint3Documents/sprint3-board-1.png)
   ![Sprint 3 Board 2](ProjectManagement/Sprint3Documents/sprint3-board-2.png)
+  ![Sprint 3 Board 3](ProjectManagement/Sprint3Documents/sprint3-board-3.png)
 
 - **Ürün Durumu:** Sprint 3'te ürün ilk kez uçtan uca **canlı** çalışır hale getirildi. Arayüzden gelen gerçek istek n8n Cloud üzerinden Gemini ve Supabase'e ulaşıyor; sınıflandırma → RAG (bilgi tabanından doğrulanmış bilgi) → dilekçe/yol haritası üretimi → doğrulayıcı (self-check) katmanı → cevap zinciri tek akışta işliyor ve sonuç arayüze dönüyor.
 
